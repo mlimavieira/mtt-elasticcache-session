@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+
+	<Resource name="jdbc/MyDatasourceDS" 
+			  auth="Container"
+			  type="javax.sql.DataSource" 
+			  url="${JDBC_CONNECTION_STRING}"
+			  initialSize="1" 
+			  maxActive="32" 
+			  maxIdle="5" 
+			  maxWait="5000"
+			  driverClassName="com.mysql.jdbc.Driver" 
+			  validationQuery="SELECT 'OK'"
+			  testWhileIdle="true" 
+			  testOnBorrow="true" 
+			  numTestsPerEvictionRun="10"
+			  timeBetweenEvictionRunsMillis="30000" 
+			  minEvictableIdleTimeMillis="120000" />
+
+</Context>
