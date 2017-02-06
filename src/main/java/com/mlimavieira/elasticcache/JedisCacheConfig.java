@@ -1,5 +1,7 @@
-package java.lang;
+package com.mlimavieira.elasticcache;
 
+import java.lang.Long;
+import java.lang.String;
 import java.util.HashMap;
 import java.util.Map;
 
