@@ -16,7 +16,6 @@ import org.springframework.cache.annotation.CachingConfigurerSupport;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 
 @EnableCaching
 @Configuration
@@ -38,13 +37,20 @@ public class RedissonCacheConfig extends CachingConfigurerSupport {
 	public CacheManager cacheManager() {
 		Map<String, CacheConfig> config = new HashMap<>();
 
+		// TTL 5 minutes and MaxIdleTime 10 minutes
+		config.put("airport", new CacheConfig(6000 * 5, 6000*10));
+		
+		
 		// TTL 30 seconds and MaxIdleTime 60 seconds
 		config.put("listAirports", new CacheConfig(30000L, 60000));
-		config.put("airport", new CacheConfig(30000L, 60000));
+		
+		
 		config.put("airportCity", new CacheConfig(30000L, 60000));
+		config.put("airportCities", new CacheConfig(30000L, 60000));
+		
 		config.put("airportCountry", new CacheConfig(30000L, 60000));
 		config.put("airportCountries", new CacheConfig(30000L, 60000));
-		config.put("airportCities", new CacheConfig(30000L, 60000));
+		
 		
 		RedissonSpringCacheManager redissonSpringCacheManager = new RedissonSpringCacheManager(redisson(), config);
 
