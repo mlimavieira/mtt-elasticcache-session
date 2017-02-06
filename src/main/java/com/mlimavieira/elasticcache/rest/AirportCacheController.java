@@ -46,7 +46,9 @@ public class AirportCacheController {
 	 * Clean all entries for the cache named "listAirports" Remove the entry
 	 * with specific id in cache named airport
 	 */
-	@Caching(evict = { @CacheEvict(cacheNames = "airport", key = "#id"), @CacheEvict(allEntries = true, cacheNames = "listAirports") })
+	@Caching(evict = { 
+			@CacheEvict(cacheNames = "airport", key = "#id"), 
+			@CacheEvict(cacheNames = "listAirports", allEntries = true) })
 	@RequestMapping(value = "/airport/{id}", method = RequestMethod.DELETE)
 	public void delete(@PathVariable Long id) {
 		airportRepository.delete(id);
